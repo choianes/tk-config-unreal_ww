@@ -55,7 +55,7 @@ paths:
     # Hook implementation intended to be a starting point for a pipeline
     # No context info used in template, developers expected to further customize
     unreal.asset_publish:
-        definition: '@asset_root/pub/unreal/fbx/{Asset}.v{version}.fbx'
+        definition: '@asset_root/pub/unreal/{extension}/{Asset}.{Step}.v{version}.{extension}'
 strings:
    # entity-specific templates for importing files into the Unreal content browser
     # template logic is defined in Python, not settings:

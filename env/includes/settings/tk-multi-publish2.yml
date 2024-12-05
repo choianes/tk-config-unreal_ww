@@ -175,26 +175,13 @@ settings.tk-multi-publish2.maya.asset_step:
     hook: "{engine}/tk-multi-publish2/basic/start_version_control.py"
     settings: {}
   - name: Publish to Flow Production Tracking
-    hook: "{self}/publish_file.py:{engine}/tk-multi-publish2/basic/publish_session.py"
+    hook: "{self}/publish_fbx.py:{engine}/tk-multi-publish2/basic/publish_session.py"
     settings:
         Publish Template: maya_asset_pub
   - name: Publish to Flow Production Tracking
     hook: "{self}/publish_file.py:{engine}/tk-multi-publish2/basic/publish_session_geometry.py"
     settings:
         Publish Template: asset_alembic_cache
-  file_types:  # 여기 추가
-    - name: Maya ASCII
-      extensions: [ma]
-      icon_path: '{config}/icons/ma.png'
-    - name: Maya Binary
-      extensions: [mb]
-      icon_path: '{config}/icons/mb.png'
-    - name: FBX
-      extensions: [fbx]
-      icon_path: '{config}/icons/fbx.png'  # (선택 사항)
-    - name: Alembic Cache
-      extensions: [abc]
-      icon_path: '{config}/icons/abc.png'
   help_url: *help_url
   location: "@apps.tk-multi-publish2.location"
 

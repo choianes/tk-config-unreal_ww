@@ -4,7 +4,7 @@
 
 
 # These are used by the Loader in Unreal
-    ue_sg_asset_type:
+    sg_asset_type:
         type: str
         shotgun_entity_type: Asset
         shotgun_field_name: sg_asset_type

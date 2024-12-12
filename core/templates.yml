@@ -29,15 +29,22 @@ include: ../env/includes/unreal/templates.yml
 keys:
     Sequence:
         type: str
+        shotgun_entity_type: Shot
+        shotgun_field_name: sg_sequence
     Shot:
         type: str
+        shotgun_entity_type: Shot
+        shotgun_field_name: code
     Step:
         type: str
     sg_asset_type:
-        type: str    
+        type: str
+        shotgun_entity_type: Asset
+        shotgun_field_name: sg_asset_type    
     Asset:
         type: str
-        filter_by: "^[A-Za-z0-9_\\.]+$"
+        shotgun_entity_type: Asset
+        shotgun_field_name: code
     name:
         type: str
         filter_by: "^[A-Za-z0-9_\\.]+$"
@@ -64,6 +71,18 @@ keys:
             exr: "Image Sequence (.exr)"
             mov: "QuickTime Movie (.mov)"
             mp4: "MPEG-4 Movie (.mp4)"
+    # These are used by the Movie Publish in Unreal
+    ue_level_sequence:
+        type: str
+    ue_world:
+        type: str
+    # Movie extension for UE, avi on Windows, mov on other platforms
+    ue_mov_ext:
+        type: str
+        choices:
+            mov: Quicktime Movie (.mov)
+            avi: Audio Video Interleaved (.avi)
+            exr: 
     # Represents the optional output name for frames written by the Shotgun Write Node
     nuke.output:
         alias: output

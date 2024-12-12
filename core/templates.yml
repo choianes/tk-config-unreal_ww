@@ -60,6 +60,10 @@ keys:
         type: str
     extension:
         type: str
+        choices:
+            exr: "Image Sequence (.exr)"
+            mov: "QuickTime Movie (.mov)"
+            mp4: "MPEG-4 Movie (.mp4)"
     # Represents the optional output name for frames written by the Shotgun Write Node
     nuke.output:
         alias: output
@@ -519,8 +523,7 @@ paths:
         definition: '@asset_root/pub/maya/fbx/{Asset}.{Step}.v{version}.{extension}'
     # Render turntable publishing path in Maya (Maya에서 렌더링된 턴테이블 영상을 퍼블리시할 때 사용하는 경로)
     maya_turntable_publish:
-        definition: '@asset_root/review/{Asset}.{Step}.turntable.v{version}.{extension}'
-
+        definition: '@asset_root/review/{Asset}.{Step}.turntable.v{version}.{ue_mov_ext}'
 
     #
     # Houdini

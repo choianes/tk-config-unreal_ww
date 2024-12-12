@@ -2,7 +2,7 @@
 # This file has been modified by Epic Games, Inc. and is subject to the license
 # file included in this repository.
 
-keys:
+
 # These are used by the Loader in Unreal
     ue_sg_asset_type:
         type: str
@@ -31,6 +31,7 @@ keys:
         choices:
             mov: Quicktime Movie (.mov)
             avi: Audio Video Interleaved (.avi)
+            exr: 
 
 paths:
  #
@@ -44,18 +45,17 @@ paths:
         definition: '@shot_root/publish/unreal/{name}.v{version}.nk'
     # The location of FBX exports for Unreal
     unreal.maya_asset_fbx_publish:
-        definition: '@asset_root/pub/maya/fbx/{Asset}.{Step}.unreal.v{version}.fbx'
-
+        definition: '@asset_root/pub/maya/fbx/{Asset}.{Step}.v{version}.{extension}'
     # The location of turntable review output rendered in Unreal
     unreal.maya_turntable_render:
         definition: '@asset_root/work/images/{name}_turntable_v{version}.{ue_mov_ext}'
     unreal.maya_turntable_publish:
-        definition: '@asset_root/review/{Asset}.{Step}.turntable.unreal.v{version}.{ue_mov_ext}'
+        definition: '@asset_root/review/{Asset}.{Step}.turntable.v{version}.{ue_mov_ext}'
     # Placeholder location for static mesh assets exported from Unreal
     # Hook implementation intended to be a starting point for a pipeline
     # No context info used in template, developers expected to further customize
     unreal.asset_publish:
-        definition: '@asset_root/pub/unreal/{extension}/{Asset}.{Step}.v{version}.{extension}'
+        definition: '@asset_root/pub/unreal/{extension}/{Asset}.{Step}.v{version}.{extension}' #exr, mov, mp4
 strings:
    # entity-specific templates for importing files into the Unreal content browser
     # template logic is defined in Python, not settings:

@@ -29,25 +29,17 @@ include: ../env/includes/unreal/templates.yml
 keys:
     Sequence:
         type: str
-        shotgun_entity_type: Shot
-        shotgun_field_name: sg_sequence
     Shot:
         type: str
-        shotgun_entity_type: Shot
-        shotgun_field_name: code
     Step:
         type: str
     sg_asset_type:
         type: str
-        shotgun_entity_type: Asset
-        shotgun_field_name: sg_asset_type    
     Asset:
         type: str
-        shotgun_entity_type: Asset
-        shotgun_field_name: code
     name:
         type: str
-        filter_by: "^[A-Za-z0-9_\\.]+$"
+        filter_by: "^[A-Za-z0-9_]+$"
     iteration:
         type: int
     version:
@@ -65,24 +57,7 @@ keys:
         type: int
     segment_name:
         type: str
-    extension:
-        type: str
-        choices:
-            exr: "Image Sequence (.exr)"
-            mov: "QuickTime Movie (.mov)"
-            mp4: "MPEG-4 Movie (.mp4)"
-    # These are used by the Movie Publish in Unreal
-    ue_level_sequence:
-        type: str
-    ue_world:
-        type: str
-    # Movie extension for UE, avi on Windows, mov on other platforms
-    ue_mov_ext:
-        type: str
-        choices:
-            mov: Quicktime Movie (.mov)
-            avi: Audio Video Interleaved (.avi)
-            exr: 
+
     # Represents the optional output name for frames written by the Shotgun Write Node
     nuke.output:
         alias: output
@@ -159,9 +134,9 @@ keys:
     maya_extension:
         type: str
         choices:
-            ma: "Maya Ascii (.ma)"
-            mb: "Maya Binary (.mb)"
-            fbx: "FBX File (.fbx)"
+            ma: "(.ma)"
+            mb: "(.mb)"
+            fbx: "(.fbx)"
         default: mb
         alias: extension
 
@@ -533,14 +508,17 @@ paths:
         definition: '@asset_root/pub/maya'
     # The location of WIP files
     maya_asset_work:
-        definition: '@asset_root/dev/maya/{extension}/{Asset}.{Step}.v{version}.{extension}'
+        definition: '@asset_root/dev/maya/{maya_extension}/{Asset}.{Step}.v{version}.{maya_extension}'
     # The location of backups of WIP files
     maya_asset_snapshot:
-        definition: '@asset_root/dev/maya/snapshots/{name}.v{version}.{timestamp}.{extension}'
+        definition: '@asset_root/dev/maya/snapshots/{name}.v{version}.{timestamp}.{maya_extension}'
     # The location of published maya files
     maya_asset_publish:
-        definition: '@asset_root/pub/maya/fbx/{Asset}.{Step}.v{version}.{extension}'
-    # Render turntable publishing path in Maya (Maya에서 렌더링된 턴테이블 영상을 퍼블리시할 때 사용하는 경로)
+        definition: '@asset_root/pub/maya/{maya_extension}/{Asset}.{Step}.v{version}.{maya_extension}'
+    # The new location of published maya fbx files - - - - - - - - - - - - -
+    maya_asset_fbx_publish:
+        definition: '@asset_root/pub/maya/{maya_extension}/{Asset}.{Step}.v{version}.{maya_extension}'
+    # Render turntable publishing path in Maya - - - - - - - - - - - - - -
     maya_turntable_publish:
         definition: '@asset_root/review/{Asset}.{Step}.turntable.v{version}.{ue_mov_ext}'
 

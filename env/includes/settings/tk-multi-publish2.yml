@@ -178,6 +178,10 @@ settings.tk-multi-publish2.maya.asset_step:
     hook: "{self}/publish_file.py:{engine}/tk-multi-publish2/basic/publish_session.py"
     settings:
         Publish Template: maya_asset_publish
+  - name: Publish FBX to ShotGrid  # add new plugin - - - - - - 
+    hook: "{self}/collector.py:{config}/publish_session_geometry.py"
+    settings:
+        Publish Template: maya_asset_fbx_publish
   - name: Publish to Flow Production Tracking
     hook: "{self}/publish_file.py:{engine}/tk-multi-publish2/basic/publish_session_geometry.py"
     settings:
